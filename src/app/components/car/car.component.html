@@ -1,1 +1,64 @@
-<p>car works!</p>
+<div class="container">
+  <h4>ARAÇLAR</h4>
+
+  <div class="row">
+    <div class="col-12 mb-3">
+      <label for="filterText" class="form-label">Araba Ara</label>
+      <input
+        type="text"
+        [(ngModel)]="filterText"
+        class="form-control"
+        id="filterText"
+        placeholder="Arama İfadesi"
+      />
+      <div *ngIf="filterText" class="alert alert-info mt-1">
+        {{ filterText }} aradınız.
+      </div>
+    </div>
+    <ng-container
+      *ngFor="
+        let carDetail of carsWithDetails | carFilter: filterText as result
+      "
+    >
+      <div *ngFor="let carDetail of result" class="col-4 mb-3">
+        <div class="card">
+          <div class="card">
+            <div>
+              <img
+                [src]="getImageUrl(carDetail.carImages[0].imagePath)"
+                class="card-img-top"
+                style="height: 200px"
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{ carDetail.name }}</h5>
+              <p class="card-text">
+                <b>Model Yılı:</b> {{ carDetail.modelYear }}
+              </p>
+              <hr />
+              <p class="card-text"><b>Renk:</b> {{ carDetail.colorName }}</p>
+              <hr />
+              <p class="card-text">
+                <b>Günlük Fiyat:</b> {{ carDetail.dailyPrice }} ₺
+              </p>
+              <hr />
+              <p class="card-text">
+                <b>Açıklama:</b> {{ carDetail.description }}
+              </p>
+              <a
+                routerLink="/cars/getCarByImageId/{{ carDetail.id }}"
+                class="btn btn-primary"
+                >Detay</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 alert alert-warning" *ngIf="result.length === 0">
+        <span *ngIf="filterText">{{ filterText }} aramasına göre </span> Araç
+        Bulunamadı
+      </div>
+    </ng-container>
+  </div>
+</div>

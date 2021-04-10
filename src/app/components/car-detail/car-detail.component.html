@@ -1,0 +1,41 @@
+<div class="container">
+  <div *ngFor="let car of carDetails" class="card mb-3">
+    <div class="row">
+      <div *ngFor="let image of car.carImages" class="col-3">
+        <img [src]="getImageUrl(image.imagePath)" class="card-img-top" />
+      </div>
+    </div>
+    <div class="rounded-0 mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Marka</th>
+            <th>Renk</th>
+            <th>Günlük Fiyat</th>
+            <th>Açıklama</th>
+            <th>Model Yılı</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let car of carDetails">
+          <td>{{ car.id }}</td>
+          <td>{{ car.name }}</td>
+          <td>{{ car.colorName }}</td>
+          <td>{{ car.dailyPrice }}</td>
+          <td>{{ car.description }}</td>
+          <td>{{ car.modelYear }}</td>
+          <td>
+            <button
+              type="button"
+              (click)="addRental(car.dailyPrice, car.id)"
+              class="btn btn-info"
+            >
+              Kirala
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

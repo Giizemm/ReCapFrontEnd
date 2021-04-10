@@ -1,1 +1,42 @@
-<p>color works!</p>
+<h3 class="mt-2 title">Filtrele</h3>
+
+<div class="mb-3">
+<select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example" >
+  <option [ngValue]="colorFilter" [disabled]="true" >Renk Seçiniz</option>
+  <option
+    *ngFor="let color of colors"
+    selected="{{getSelectedColor(color.colorId)}}"
+    [value]="color.colorId"
+  >
+    {{ color.colorName }}
+  </option>
+</select>
+</div>
+<div class="mb-3">
+<select [(ngModel)]="brandFilter" class="form-select" aria-label="Default select example">
+  <option [ngValue]="brandFilter" [disabled]="true" >Marka Seçiniz</option>
+  <option
+    *ngFor="let brand of brands"
+    selected="{{getSelectedBrand(brand.brandId)}}"
+    [value]="brand.brandId"
+  >
+    {{ brand.name }}
+  </option>
+</select>
+</div>
+<div class="col-12">
+<div class="row">
+  <div class="col-6">
+    <a
+    routerLink="/cars/filter/{{colorFilter}}/{{brandFilter}}" class="btn btn-warning">Filtrele</a>
+  </div>
+    <div class="col-6">
+    <a *ngIf="(colorFilter && brandFilter)" (click)="clearFilter()"
+    routerLink="/cars" class="btn btn-warning"> Temizle</a>
+  </div>
+</div>
+
+
+
+
+
