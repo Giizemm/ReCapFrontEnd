@@ -15,12 +15,20 @@
     <tr>
       <th>Id</th>
       <th>Marka Adı</th>
+      <th style="width:10%">#</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let color of colors |colorFilter:filterText">
       <td>{{color.colorId}}</td>
       <td>{{color.colorName}}</td>
+      <td> <button
+        type="button"
+        class="btn btn-info"
+        routerLink="/colors/update/{{ color.colorId }}"
+      >
+        Güncelle
+      </button></td>
     </tr>
   </tbody>
 </table>

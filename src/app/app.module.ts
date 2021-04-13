@@ -22,6 +22,11 @@ import { ColorTableComponent } from './components/color-table/color-table.compon
 import { RentACarComponent } from './components/rent-a-car/rent-a-car.component';
 
 import { ToastrModule } from 'ngx-toastr';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { BrandEditComponent } from './components/brand-edit/brand-edit.component';
+import { ColorEditComponent } from './components/color-edit/color-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,11 @@ import { ToastrModule } from 'ngx-toastr';
     BrandTableComponent,
     ColorTableComponent,
     RentACarComponent,
+    BrandAddComponent,
+    ColorAddComponent,
+    CarAddComponent,
+    BrandEditComponent,
+    ColorEditComponent,
   ],
   imports: [
     BrowserModule,

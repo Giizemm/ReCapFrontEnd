@@ -1,3 +1,8 @@
+import { ColorEditComponent } from './components/color-edit/color-edit.component';
+import { BrandEditComponent } from './components/brand-edit/brand-edit.component';
+import { CarAddComponent } from './components/car-add/car-add.component';
+import { ColorAddComponent } from './components/color-add/color-add.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { RentACarComponent } from './components/rent-a-car/rent-a-car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { ColorTableComponent } from './components/color-table/color-table.component';
@@ -19,6 +24,11 @@ const routes: Routes = [
   { path: 'cars/color', component: ColorTableComponent },
   { path: 'cars/rental', component: RentalComponent },
   { path: 'rentals/:carId', component: RentACarComponent },
+  { path: 'brands/add', component: BrandAddComponent },
+  { path: 'colors/add', component: ColorAddComponent },
+  { path: 'cars/add', component: CarAddComponent },
+  { path: 'brands/update/:brandId', component: BrandEditComponent },
+  { path: 'colors/update/:colorId', component: ColorEditComponent },
 ];
 
 @NgModule({

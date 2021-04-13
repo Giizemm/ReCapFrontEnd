@@ -1,4 +1,4 @@
-export class Rental {
+export interface Rental {
   id: number;
   rentDate: Date;
   returnDate: Date;

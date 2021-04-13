@@ -19,7 +19,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./rent-a-car.component.css'],
 })
 export class RentACarComponent implements OnInit {
-  rental: Rental;
+  rental: Partial<Rental> = {};
   creditCard: CreditCard;
   rentalAddForm: FormGroup;
   dailyPrice: number;
@@ -109,7 +109,6 @@ export class RentACarComponent implements OnInit {
 
   onSubmit() {
     let cardModel = Object.assign({}, this.creditCardForm.value);
-    this.rental = new Rental();
     this.rental.carId = this.currentCarId;
     this.rental.customerId = 1;
     this.rental.rentDate = this.creditCardForm.controls['rentDate'].value;

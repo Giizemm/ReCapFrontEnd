@@ -28,7 +28,10 @@ export class RentalService {
     return this.httpClient.get<SingleResponseModel<Rental>>(newPath);
   }
 
-  addRental(rental: Rental, creditCard: CreditCard): Observable<ResponseModel> {
+  addRental(
+    rental: Partial<Rental>,
+    creditCard: CreditCard
+  ): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + 'rentals/add', {
       rental: {
         carId: rental.carId,
