@@ -1,0 +1,72 @@
+<div class="content">
+  <div class="container">
+    <h4>ARAÇLAR</h4>
+
+    <div class="row">
+      <div class="col-12 mb-3">
+        <label for="filterText" class="form-label">Araba Ara</label>
+        <input
+          type="text"
+          [(ngModel)]="filterText"
+          class="form-control"
+          id="filterText"
+          placeholder="Arama İfadesi"
+        />
+        <div *ngIf="filterText" class="alert alert-info mt-1">
+          {{ filterText }} aradınız.
+        </div>
+      </div>
+
+      <div class="col-12 mb-3">
+        <table class="table table-hover mt-4">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Resim</th>
+              <th>Marka</th>
+              <th>Renk</th>
+              <th>Model Yılı</th>
+              <th>Günlük Fiyat</th>
+              <th style="width: 10%">#</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let carDetail of carsWithDetails | carFilter: filterText"
+            >
+              <td>{{ carDetail.id }}</td>
+              <td>
+                <img
+                  [src]="getImageUrl(carDetail.carImages[0].imagePath)"
+                  class="card-img-left"
+                  style="height: 100px"
+                />
+              </td>
+              <td>{{ carDetail.name }}</td>
+              <td>{{ carDetail.colorName }}</td>
+              <td>{{ carDetail.modelYear }}</td>
+              <td>{{ carDetail.dailyPrice }}</td>
+              <td>
+                <button
+                  type="button"
+                  routerLink="/cars/update/{{ carDetail.id }}"
+                  class="btn btn-info"
+                >
+                  Güncelle
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="col-12 alert alert-warning"
+        *ngIf="carsWithDetails.length === 0"
+      >
+        <span *ngIf="filterText">{{ filterText }} aramasına göre </span> Araç
+        Bulunamadı
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,5 @@
+import { CarEditComponent } from './components/car-edit/car-edit.component';
+import { CarTableComponent } from './components/car-table/car-table.component';
 import { ColorEditComponent } from './components/color-edit/color-edit.component';
 import { BrandEditComponent } from './components/brand-edit/brand-edit.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -16,6 +18,7 @@ import { BrandTableComponent } from './components/brand-table/brand-table.compon
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
   { path: 'cars', component: CarComponent },
+  { path: 'cars-list', component: CarTableComponent },
   { path: 'cars/brand/:brandId', component: CarComponent },
   { path: 'cars/filter/:colorId/:brandId', component: CarComponent },
   { path: 'cars/getCarByImageId/:id', component: CarDetailComponent },
@@ -29,6 +32,7 @@ const routes: Routes = [
   { path: 'cars/add', component: CarAddComponent },
   { path: 'brands/update/:brandId', component: BrandEditComponent },
   { path: 'colors/update/:colorId', component: ColorEditComponent },
+  { path: 'cars/update/:carId', component: CarEditComponent },
 ];
 
 @NgModule({
