@@ -1,6 +1,7 @@
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,6 +30,8 @@ import { BrandEditComponent } from './components/brand-edit/brand-edit.component
 import { ColorEditComponent } from './components/color-edit/color-edit.component';
 import { CarEditComponent } from './components/car-edit/car-edit.component';
 import { CarTableComponent } from './components/car-table/car-table.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,8 @@ import { CarTableComponent } from './components/car-table/car-table.component';
     ColorEditComponent,
     CarEditComponent,
     CarTableComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,13 @@ import { CarTableComponent } from './components/car-table/car-table.component';
     NgbModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   entryComponents: [RentACarComponent],
   bootstrap: [AppComponent],
 })

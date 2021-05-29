@@ -1,3 +1,5 @@
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 import { CarEditComponent } from './components/car-edit/car-edit.component';
 import { CarTableComponent } from './components/car-table/car-table.component';
 import { ColorEditComponent } from './components/color-edit/color-edit.component';
@@ -14,6 +16,7 @@ import { CarComponent } from './components/car/car.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrandTableComponent } from './components/brand-table/brand-table.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
@@ -29,10 +32,12 @@ const routes: Routes = [
   { path: 'rentals/:carId', component: RentACarComponent },
   { path: 'brands/add', component: BrandAddComponent },
   { path: 'colors/add', component: ColorAddComponent },
-  { path: 'cars/add', component: CarAddComponent },
+  { path: 'cars/add', component: CarAddComponent,canActivate:[LoginGuard] },
   { path: 'brands/update/:brandId', component: BrandEditComponent },
   { path: 'colors/update/:colorId', component: ColorEditComponent },
   { path: 'cars/update/:carId', component: CarEditComponent },
+  { path: 'login', component: LoginComponent },
+  {path:'users/add',component:RegisterComponent}
 ];
 
 @NgModule({
