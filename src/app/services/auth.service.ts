@@ -1,3 +1,4 @@
+import { LocalStorageService } from './local-storage.service';
 import { UserRegister } from './../models/userRegister';
 import { SingleResponseModel } from './../models/singleResponseModel';
 import { TokenModel } from './../models/tokenModel';
@@ -10,7 +11,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   apiUrl = 'https://localhost:44392/api/auth/';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,private localStorageService:LocalStorageService) {}
 
   login(userModel: LoginModel) {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl + 'login', userModel);
@@ -20,10 +21,14 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    if (localStorage.getItem('token')) {
+    if (this.localStorageService.getItem('token')) {
       return true;
     } else {
       return false;
     }
+  }
+
+  logOut(){
+    this.localStorageService.clear();
   }
 }

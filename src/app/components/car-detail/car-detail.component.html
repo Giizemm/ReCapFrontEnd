@@ -1,7 +1,7 @@
 <div class="container">
-  <div *ngFor="let car of carDetails" class="card mb-3">
+  <div *ngIf="carDetails" class="card mb-3">
     <div class="row">
-      <div *ngFor="let image of car.carImages" class="col-3">
+      <div *ngFor="let image of carDetails.carImages" class="col-3">
         <img [src]="getImageUrl(image.imagePath)" class="card-img-top" />
       </div>
     </div>
@@ -15,20 +15,22 @@
             <th>Günlük Fiyat</th>
             <th>Açıklama</th>
             <th>Model Yılı</th>
+            <th>Findeks Puanı</th>
             <th>#</th>
           </tr>
         </thead>
-        <tr *ngFor="let car of carDetails">
-          <td>{{ car.id }}</td>
-          <td>{{ car.name }}</td>
-          <td>{{ car.colorName }}</td>
-          <td>{{ car.dailyPrice }}</td>
-          <td>{{ car.description }}</td>
-          <td>{{ car.modelYear }}</td>
+        <tr>
+          <td>{{ carDetails.id }}</td>
+          <td>{{ carDetails.name }}</td>
+          <td>{{ carDetails.colorName }}</td>
+          <td>{{ carDetails.dailyPrice }}</td>
+          <td>{{ carDetails.description }}</td>
+          <td>{{ carDetails.modelYear }}</td>
+          <td>{{ carDetails.findexPoints }}</td>
           <td>
             <button
               type="button"
-              (click)="addRental(car.dailyPrice, car.id)"
+              (click)="addRental(carDetails.dailyPrice, carDetails.id)"
               class="btn btn-info"
             >
               Kirala

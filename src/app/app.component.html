@@ -1,5 +1,5 @@
-<div class="container">
-<app-navi></app-navi>
+<div class="container" *ngIf="isAuthenticated; else loginTemplate">
+  <app-navi></app-navi>
   <div class="row">
     <div class="col-md-3">
       <app-color></app-color>
@@ -20,6 +20,6 @@
    <div class="row">
     <app-rental></app-rental>
   </div> -->
-
-
 </div>
+<ng-template #loginTemplate>   <app-navi></app-navi>
+  <router-outlet></router-outlet></ng-template>

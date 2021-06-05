@@ -7,5 +7,6 @@ export interface CarDetail {
   dailyPrice: number;
   description: string;
   modelYear: number;
+  findexPoints:number;
   carImages: CarImage[];
 }

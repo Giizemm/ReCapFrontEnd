@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { CarEditComponent } from './components/car-edit/car-edit.component';
@@ -24,7 +25,10 @@ const routes: Routes = [
   { path: 'cars-list', component: CarTableComponent },
   { path: 'cars/brand/:brandId', component: CarComponent },
   { path: 'cars/filter/:colorId/:brandId', component: CarComponent },
-  { path: 'cars/getCarByImageId/:id', component: CarDetailComponent },
+  {
+    path: 'cars/getCarByImageId/:id',
+    component: CarDetailComponent,
+  },
   { path: 'cars/customer', component: CustomerComponent },
   { path: 'cars/brand', component: BrandTableComponent },
   { path: 'cars/color', component: ColorTableComponent },
@@ -32,12 +36,22 @@ const routes: Routes = [
   { path: 'rentals/:carId', component: RentACarComponent },
   { path: 'brands/add', component: BrandAddComponent },
   { path: 'colors/add', component: ColorAddComponent },
-  { path: 'cars/add', component: CarAddComponent,canActivate:[LoginGuard] },
+  {
+    path: 'users/info',
+    component: UserProfileComponent,
+    canActivate: [LoginGuard],
+  },
+  { path: 'cars/add', component: CarAddComponent, canActivate: [LoginGuard] },
   { path: 'brands/update/:brandId', component: BrandEditComponent },
   { path: 'colors/update/:colorId', component: ColorEditComponent },
   { path: 'cars/update/:carId', component: CarEditComponent },
-  { path: 'login', component: LoginComponent },
-  {path:'users/add',component:RegisterComponent}
+  { path: 'users/add', component: RegisterComponent },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    runGuardsAndResolvers: 'always',
+    component: LoginComponent,
+  },
 ];
 
 @NgModule({

@@ -32,6 +32,7 @@ import { CarEditComponent } from './components/car-edit/car-edit.component';
 import { CarTableComponent } from './components/car-table/car-table.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { RegisterComponent } from './components/register/register.component';
     CarTableComponent,
     LoginComponent,
     RegisterComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
